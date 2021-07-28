@@ -1,0 +1,4 @@
+Main functions work flow of Deswap;
+
+- deploy interest rate model
+- Deploy DBep20Delegator where we enter new token in market
