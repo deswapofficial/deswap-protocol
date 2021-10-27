@@ -252,7 +252,7 @@ contract DBep20Storage {
     address public underlying;
 }
 
-contract DBep20Interface is DBep20Storage {
+contract DERC20Interface is DBep20Storage {
 
     /*** User Interface ***/
 
@@ -270,14 +270,14 @@ contract DBep20Interface is DBep20Storage {
     function _addReserves(uint addAmount) external returns (uint);
 }
 
-contract VDelegationStorage {
+contract DDelegationStorage {
     /**
      * @notice Implementation address for this contract
      */
     address public implementation;
 }
 
-contract VDelegatorInterface is VDelegationStorage {
+contract DDelegatorInterface is DDelegationStorage {
     /**
      * @notice Emitted when implementation is changed
      */
@@ -292,7 +292,7 @@ contract VDelegatorInterface is VDelegationStorage {
     function _setImplementation(address implementation_, bool allowResign, bytes memory becomeImplementationData) public;
 }
 
-contract VDelegateInterface is VDelegationStorage {
+contract DDelegateInterface is DDelegationStorage {
     /**
      * @notice Called by the delegator on a delegate to initialize it for duty
      * @dev Should revert if any issues arise which make it unfit for delegation

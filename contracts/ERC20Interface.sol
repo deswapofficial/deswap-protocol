@@ -1,6 +1,6 @@
 pragma solidity ^0.5.16;
 
-interface BEP20Interface {
+interface ERC20Interface {
   /**
    * @dev Returns the amount of tokens in existence.
    */

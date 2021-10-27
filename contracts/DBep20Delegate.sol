@@ -7,7 +7,7 @@ import "./DBep20.sol";
  * @notice DTokens which wrap an EIP-20 underlying and are delegated to
  * @author Deswap
  */
-contract DBep20Delegate is DBep20, VDelegateInterface {
+contract DBep20Delegate is DBep20, DDelegateInterface {
     /**
      * @notice Construct an empty delegate
      */

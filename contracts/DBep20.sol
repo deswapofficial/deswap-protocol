@@ -7,7 +7,7 @@ import "./DToken.sol";
  * @notice DTokens which wrap an EIP-20 underlying
  * @author Deswap
  */
-contract DBep20 is DToken, DBep20Interface {
+contract DBep20 is DToken, DERC20Interface {
     /**
      * @notice Initialize the new money market
      * @param underlying_ The address of the underlying asset

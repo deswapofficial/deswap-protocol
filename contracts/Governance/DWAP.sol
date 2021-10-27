@@ -1,19 +1,18 @@
 pragma solidity ^0.5.16;
 
 // ----------------------------------------------------------------------------
-// 'SXP' 'Swipe' BEP20 token contract
+// 'DWAP' 'Deswap' ERC20 token contract
 //
-// Symbol      : SXP
-// Name        : Swipe
-// Total supply: 289,714,926.000000000000000000
+// Symbol      : DWAP
+// Name        : Deswap
+// Total supply: 50,000,000,000.000000000000000000
 // Decimals    : 18
-// Website     : https://swipe.io
 //
 // ----------------------------------------------------------------------------
 
 import "../SafeMath.sol";
 import "../Ownable.sol";
-import "../BEP20Interface.sol";
+import "../ERC20Interface.sol";
 
 contract Tokenlock is Ownable {
     /// @notice Indicates if token is locked
@@ -76,7 +75,7 @@ contract UserLock is Ownable {
     }
 }
 
-contract SXP is BEP20Interface, Tokenlock, UserLock {
+contract DWAP is ERC20Interface, Tokenlock, UserLock {
     using SafeMath for uint256;
 
     /// @notice Official record of token balances for each account
@@ -88,13 +87,13 @@ contract SXP is BEP20Interface, Tokenlock, UserLock {
     /// @notice Total number of tokens in circulation
     uint256 private _totalSupply;
 
-    /// @notice BEP-20 token decimals for this token
+    /// @notice ERC-20 token decimals for this token
     uint8 private _decimals;
 
-    /// @notice BEP-20 token symbol for this token
+    /// @notice ERC-20 token symbol for this token
     string private _symbol;
 
-    /// @notice BEP-20 token name for this token
+    /// @notice ERC-20 token name for this token
     string private _name;
 
     /// @notice A record of each accounts delegate
@@ -127,28 +126,28 @@ contract SXP is BEP20Interface, Tokenlock, UserLock {
     /// @notice An event thats emitted when a delegate account's vote balance changes
     event DelegateVotesChanged(address indexed delegate, uint256 previousBalance, uint256 newBalance);
 
-    /// @notice The standard BEP-20 transfer event
+    /// @notice The standard ERC-20 transfer event
     event Transfer(address indexed from, address indexed to, uint256 amount);
 
-    /// @notice The standard BEP-20 approval event
+    /// @notice The standard ERC-20 approval event
     event Approval(address indexed owner, address indexed spender, uint256 amount);
 
     /**
-     * @notice Construct a new SXP token
+     * @notice Construct a new DWAP token
      * @param account The initial account to grant all the tokens
      */
     constructor(address account) public {
-        _name = "Swipe";
-        _symbol = "SXP";
+        _name = "Deswap";
+        _symbol = "DWAP";
         _decimals = 18;
-        _totalSupply = 289714926e18;
+        _totalSupply = 50000000000e18;
         _balances[account] = _totalSupply;
 
         emit Transfer(address(0), account, _totalSupply);
     }
 
     /**
-     * @dev Returns the bep token owner.
+     * @dev Returns the erc token owner.
     */
     function getOwner() external view returns (address) {
         return owner();
@@ -257,7 +256,7 @@ contract SXP is BEP20Interface, Tokenlock, UserLock {
     /**
      * @notice Atomically increases the allowance granted to `spender` by the caller
      * @dev This is an alternative to {approve} that can be used as a mitigation for
-     * problems described in {BEP20-approve}.
+     * problems described in {ERC20-approve}.
      * @param spender The address of the account which may transfer tokens
      * @param addedValue The additional number of tokens to allow which may be spent
      * @return Whether or not the approval succeeded
@@ -270,7 +269,7 @@ contract SXP is BEP20Interface, Tokenlock, UserLock {
     /**
      * @notice Atomically increases the allowance granted to `spender` by the caller
      * @dev This is an alternative to {approve} that can be used as a mitigation for
-     * problems described in {BEP20-approve}.
+     * problems described in {ERC20-approve}.
      * @param spender The address of the account which may transfer tokens
      * @param subtractedValue The subtractional number of tokens to allow which may be spent
      * @return Whether or not the approval succeeded

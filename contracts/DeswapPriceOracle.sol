@@ -3,7 +3,7 @@ pragma experimental ABIEncoderV2;
 
 import "./PriceOracle.sol";
 import "./DBep20.sol";
-import "./BEP20Interface.sol";
+import "./ERC20Interface.sol";
 import "./SafeMath.sol";
 
 interface IStdReference {
@@ -44,7 +44,7 @@ contract DeswapPriceOracle is PriceOracle {
             return prices[address(dToken)];
         } else {
             uint256 price;
-            BEP20Interface token = BEP20Interface(DBep20(address(dToken)).underlying());
+            ERC20Interface token = ERC20Interface(DBep20(address(dToken)).underlying());
 
             if(prices[address(token)] != 0) {
                 price = prices[address(token)];

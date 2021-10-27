@@ -7,7 +7,7 @@ import "./DTokenInterfaces.sol";
  * @notice DTokens which wrap an EIP-20 underlying and delegate to an implementation
  * @author Deswap
  */
-contract DBep20Delegator is DTokenInterface, DBep20Interface, VDelegatorInterface {
+contract DBep20Delegator is DTokenInterface, DERC20Interface, DDelegatorInterface {
     /**
      * @notice Construct a new money market
      * @param underlying_ The address of the underlying asset

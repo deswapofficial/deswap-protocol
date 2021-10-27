@@ -1,7 +1,7 @@
 pragma solidity ^0.5.16;
 
 import "./SafeMath.sol";
-import "./BEP20Interface.sol";
+import "./ERC20Interface.sol";
 import "./Ownable.sol";
 
 /**
@@ -34,7 +34,7 @@ contract DTreasury is Ownable {
     ) external onlyOwner {
         uint256 actualWithdrawAmount = withdrawAmount;
         // Get Treasury Token Balance
-        uint256 treasuryBalance = BEP20Interface(tokenAddress).balanceOf(address(this));
+        uint256 treasuryBalance = ERC20Interface(tokenAddress).balanceOf(address(this));
 
         // Check Withdraw Amount
         if (withdrawAmount > treasuryBalance) {
@@ -43,7 +43,7 @@ contract DTreasury is Ownable {
         }
 
         // Transfer BEP20 Token to withdrawAddress
-        BEP20Interface(tokenAddress).transfer(withdrawAddress, actualWithdrawAmount);
+        ERC20Interface(tokenAddress).transfer(withdrawAddress, actualWithdrawAmount);
 
         emit WithdrawTreasuryBEP20(tokenAddress, actualWithdrawAmount, withdrawAddress);
     }
